@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(191)
+  email String @unique @db.VarChar(191)
+  password String
+  profile String?
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  Patients Patients[]
+}
+
+enum PathD {
+  T
+  N
+  M
+}
+
+enum COMO {
+  DIABETES
+  HYPERTENTION
+  CARDIAC_DISORDER
+  NONE
+}
+
+enum PerfStat {
+  FULLY_ACTIVE
+  MODERATE_ACTIVE
+  INACTIVE
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  TS
+}
+
+enum Race {
+  WHITE
+  ASIAN
+  HISPANIC
+}
+
+model Patients {
+  id Int @id @default(autoincrement())
+  user_id Int
+  user Users @relation(fields: [user_id], references: [id])
+  first_name String @db.VarChar(191)
+  last_name String @db.VarChar(191)
+  age Int
+  gender String @db.VarChar(191)
+  race String @db.VarChar(191)
+  email String @unique @db.VarChar(191)
+  phone String @unique @db.VarChar(191)
+  InputOutputPatientMappings InputOutputPatientMappings[]
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model InputDetails {
+  id Int @id @default(autoincrement())
+  age Int
+  gender Gender @default(MALE)
+  race Race @default(WHITE)
+  pathd PathD @default(T)
+  como COMO @default(NONE)
+  disease String @db.VarChar(191)
+  sub_disease String @db.VarChar(191)
+  bio_markers String @db.VarChar(191)
+  perf_stat PerfStat @default(FULLY_ACTIVE)
+  InputOutputPatientMappings InputOutputPatientMappings[]
+  OutputDetails OutputDetails ?
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model OutputDetails {
+  id Int @id @default(autoincrement())
+  input_detail_id Int @unique
+  input_detail InputDetails @relation(fields: [input_detail_id], references: [id])
+  preferred_drug String @db.VarChar(191)
+  alternate_drug String @db.VarChar(191)
+  guideline_link String @db.VarChar(191)
+  payer_pathway String @db.VarChar(191)
+  overall_survival String @db.VarChar(191)
+  ae String @db.VarChar(191)
+  ae_management String @db.VarChar(191)
+  InputOutputPatientMappings InputOutputPatientMappings[]
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model InputOutputPatientMappings {
+  id Int @id @default(autoincrement())
+  patient_id Int
+  output_detail_id Int
+  input_detail_id Int
+  patient Patients @relation(fields: [patient_id], references: [id])
+  output_detail OutputDetails @relation(fields: [output_detail_id], references: [id])
+  input_detail InputDetails @relation(fields: [input_detail_id], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+
