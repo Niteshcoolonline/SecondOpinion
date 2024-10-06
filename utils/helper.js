@@ -31,11 +31,6 @@ export const createInputOutputDetailMappingPayload = (patient, inputDetail, outp
                 id: patient.id,
             }
         },
-        output_detail: {
-            connect: {
-                id: outputDetail.id,
-            }
-        },
         input_detail: {
             connect: {
                 id: inputDetail.id,

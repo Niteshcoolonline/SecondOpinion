@@ -4,7 +4,6 @@ import { patientSearchSchema } from "../validations/PatientSearchValidation.js";
 import prisma from "../DB/db.config.js";
 import { createInputDetailsPayload, createInputOutputDetailMappingPayload, createPatientPayload } from "../utils/helper.js";
 import { getInputDetails } from "../models/inputDetail.js";
-import { getOutputDetails } from "../models/outputDetail.js";
 import { checkUserPatient } from "../models/patient.js";
 import { getLogs } from "../models/inputOutputPatientMapping.js";
 
@@ -61,14 +60,13 @@ export default class PatientController {
                 })
             }
             const inputDetail = await getInputDetails(input_details_payload);
-            const outputDetail = await getOutputDetails(inputDetail);
-            const inputOutputPatientMappings_payload = createInputOutputDetailMappingPayload(patient, inputDetail, outputDetail);
+            //const outputDetail = await getOutputDetails(inputDetail);
+            const inputOutputPatientMappings_payload = createInputOutputDetailMappingPayload(patient, inputDetail);
             await prisma.inputOutputPatientMappings.create({data:inputOutputPatientMappings_payload});
-            delete outputDetail.created_at;
-            delete outputDetail.updated_at;
-            delete outputDetail.id;
-            delete outputDetail.input_detail_id;
-            return res.status(200).json({message: "patient created successfully", patient, inputDetail, outputDetail});
+            delete inputDetail.created_at;
+            delete inputDetail.updated_at;
+            delete inputDetail.id;
+            return res.status(200).json({message: "patient created successfully", patient, inputDetail});
         }
         catch(error){
             console.log(error);

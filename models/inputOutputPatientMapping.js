@@ -12,8 +12,8 @@ export const getLogs = async (patientId) => {
             phone: true,
             race: true,
             first_name: true,
-            last_name: true
-        }}, output_detail: {
+            last_name: true,
+        }}, input_detail: {
             select: {
             ae: true,
             ae_management: true,
