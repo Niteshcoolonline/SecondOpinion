@@ -65,7 +65,6 @@ export default class PatientController {
             await prisma.inputOutputPatientMappings.create({data:inputOutputPatientMappings_payload});
             delete inputDetail.created_at;
             delete inputDetail.updated_at;
-            delete inputDetail.id;
             return res.status(200).json({message: "patient created successfully", patient, inputDetail});
         }
         catch(error){
