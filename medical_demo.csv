@@ -1,0 +1,9 @@
+age,gender,race,como,disease,sub_disease,bio_markers,pref_status,Preffered_Drug,Alternate_Drug,Guideline_Link,Payer_Pathway,Overall_Survival,AE's,AE_Management
+25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,EGFR,FULLY_ACTIVE,test_PD_1,test_AD_1,test_GL_1,test_PP_1,test_OS_1,test_ae_1,test_aem_1
+25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,KRAS G12C,FULLY_ACTIVE,test_PD_2,test_AD_2,test_GL_2,test_PP_2,test_OS_2,test_ae_2,test_aem_2
+25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,ALK reaarangement,FULLY_ACTIVE,test_PD_3,test_AD_3,test_GL_3,test_PP_3,test_OS_3,test_ae_3,test_aem_3
+25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,ROS1 reaarangement,FULLY_ACTIVE,test_PD_4,test_AD_4,test_GL_4,test_PP_4,test_OS_4,test_ae_4,test_aem_4
+25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,BRAF V600E,FULLY_ACTIVE,test_PD_5,test_AD_5,test_GL_5,test_PP_5,test_OS_5,test_ae_5,test_aem_5
+25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,PDL1 Positive (1-49%),FULLY_ACTIVE,test_PD_6,test_AD_6,test_GL_6,test_PP_6,test_OS_6,test_ae_6,test_aem_6
+25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,PDL 1 Positive (>50%),FULLY_ACTIVE,test_PD_7,test_AD_7,test_GL_7,test_PP_7,test_OS_7,test_ae_7,test_aem_7
+25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,PDL1 Negative,FULLY_ACTIVE,test_PD_8,test_AD_8,test_GL_8,test_PP_8,test_OS_8,test_ae_8,test_aem_8

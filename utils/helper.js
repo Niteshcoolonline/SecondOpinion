@@ -24,7 +24,7 @@ export const createInputDetailsPayload = (payload) => {
     }
 } 
 
-export const createInputOutputDetailMappingPayload = (patient, inputDetail, outputDetail) => {
+export const createInputOutputDetailMappingPayload = (patient, inputDetail) => {
   return {
         patient: {
             connect: {
