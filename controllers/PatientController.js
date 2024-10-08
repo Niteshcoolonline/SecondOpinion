@@ -62,6 +62,9 @@ export default class PatientController {
                 })
             }
             const inputDetail = await getInputDetails(input_details_payload);
+            if(!inputDetail) {
+                res.status(404).json({message: "Not match with input details."});
+            }
             console.log("input details from db: ", inputDetail)
             //const outputDetail = await getOutputDetails(inputDetail);
             const inputOutputPatientMappings_payload = createInputOutputDetailMappingPayload(patient, inputDetail);

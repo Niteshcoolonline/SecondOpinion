@@ -53,7 +53,6 @@ async function importCsvToDb(filePath) {
                     ae,
                     ae_management,
                 } = row;
-                console.log(row);
                 try {
                     const record = await prisma.inputDetails.findFirst({
                         where: {
@@ -95,7 +94,8 @@ async function importCsvToDb(filePath) {
 }
 
 await importCsvToDb(csvFilePath);
-
+const records = await prisma.inputDetails.findMany({});
+console.log("records: ", records)
 
 
 app.listen(port, () => console.log("Server listening on: " + port));
