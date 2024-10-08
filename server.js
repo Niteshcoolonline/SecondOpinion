@@ -43,7 +43,7 @@ async function importCsvToDb(filePath) {
                     disease,
                     sub_disease,
                     bio_markers,
-                    pref_status,
+                    perf_stat,
                     preffered_drug,
                     alternate_drug,
                     guideline_link,
@@ -63,7 +63,7 @@ async function importCsvToDb(filePath) {
                             "disease": disease,
                             "sub_disease": sub_disease,
                             "bio_markers": bio_markers,
-                            "perf_stat": pref_status,
+                            "perf_stat": perf_stat,
                         },
                     })
                     console.log("record: ", record);
@@ -78,7 +78,7 @@ async function importCsvToDb(filePath) {
                                 "disease": disease,
                                 "sub_disease": sub_disease,
                                 "bio_markers": bio_markers,
-                                "perf_stat": pref_status,
+                                "perf_stat": perf_stat,
                                 "preferred_drug": preffered_drug,
                                 "alternate_drug": alternate_drug,
                                 "guideline_link": guideline_link,
