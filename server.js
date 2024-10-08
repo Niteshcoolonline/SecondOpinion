@@ -69,22 +69,24 @@ async function importCsvToDb(filePath) {
                     })
                     console.log("record: ", record);
                     if(!record){
-                        await prisma.inputDetails.create({
-                            age: parseInt(age),
-                            gender: gender,
-                            race: race,
-                            como: como,
-                            disease: disease,
-                            sub_disease: sub_disease,
-                            bio_markers: bio_markers,
-                            perf_stat: pref_status,
-                            preferred_drug: preffered_drug,
-                            alternate_drug: alternate_drug,
-                            guideline_link: guideline_link,
-                            payer_pathway: payer_pathway,
-                            overall_survival: overall_survival,
-                            ae: ae,
-                            ae_management: ae_management
+                        await prisma.inputDetails.create({ 
+                            data: {
+                                age: parseInt(age),
+                                gender: gender,
+                                race: race,
+                                como: como,
+                                disease: disease,
+                                sub_disease: sub_disease,
+                                bio_markers: bio_markers,
+                                perf_stat: pref_status,
+                                preferred_drug: preffered_drug,
+                                alternate_drug: alternate_drug,
+                                guideline_link: guideline_link,
+                                payer_pathway: payer_pathway,
+                                overall_survival: overall_survival,
+                                ae: ae,
+                                ae_management: ae_management
+                            }
                         })
                     }
                 } catch (err) {
