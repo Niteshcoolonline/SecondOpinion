@@ -1,4 +1,4 @@
-age,gender,race,como,disease,sub_disease,bio_markers,pref_status,preferred_drug,alternate_drug,guideline_link,payer_pathway,overall_survival,ae,ae_management
+age,gender,race,como,disease,sub_disease,bio_markers,perf_status,preferred_drug,alternate_drug,guideline_link,payer_pathway,overall_survival,ae,ae_management
 25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,EGFR,FULLY_ACTIVE,test_PD_1,test_AD_1,test_GL_1,test_PP_1,test_OS_1,test_ae_1,test_aem_1
 25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,KRAS G12C,FULLY_ACTIVE,test_PD_2,test_AD_2,test_GL_2,test_PP_2,test_OS_2,test_ae_2,test_aem_2
 25,MALE,WHITE,NONE,lung_cancer,lung_cancer_nsclc,ALK reaarangement,FULLY_ACTIVE,test_PD_3,test_AD_3,test_GL_3,test_PP_3,test_OS_3,test_ae_3,test_aem_3
