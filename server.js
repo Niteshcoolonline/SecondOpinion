@@ -6,7 +6,6 @@ const port = process.env.PORT || 3001
 import fs from 'fs';
 import path from 'path';
 import csv from 'csv-parser';
-import multer from 'multer';
 import prisma from "./DB/db.config.js";
 import { fileURLToPath } from 'url';
 
@@ -57,14 +56,14 @@ async function importCsvToDb(filePath) {
                 try {
                     const record = await prisma.inputDetails.findFirst({
                         where: {
-                            age: parseInt(age),
-                            gender: gender,
-                            race: race,
-                            como: como,
-                            disease: disease,
-                            sub_disease: sub_disease,
-                            bio_markers: bio_markers,
-                            perf_stat: pref_status,
+                            "age": parseInt(age),
+                            "gender": gender,
+                            "race": race,
+                            "como": como,
+                            "disease": disease,
+                            "sub_disease": sub_disease,
+                            "bio_markers": bio_markers,
+                            "perf_stat": pref_status,
                         },
                     })
                     console.log("record: ", record);
