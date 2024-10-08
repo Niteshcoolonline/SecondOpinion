@@ -78,7 +78,7 @@ async function importCsvToDb(filePath) {
                             sub_disease: sub_disease,
                             bio_markers: bio_markers,
                             perf_stat: pref_status,
-                            preffered_drug: preffered_drug,
+                            preferred_drug: preffered_drug,
                             alternate_drug: alternate_drug,
                             guideline_link: guideline_link,
                             payer_pathway: payer_pathway,
