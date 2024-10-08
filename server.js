@@ -53,6 +53,7 @@ async function importCsvToDb(filePath) {
                     ae,
                     ae_management,
                 } = row;
+                console.log("Row: " + row);
                 try {
                     const record = await prisma.inputDetails.findFirst({
                         where: {
