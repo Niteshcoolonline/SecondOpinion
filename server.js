@@ -26,91 +26,76 @@ app.use("/api", ApiRoutes);
 
 const csvFilePath = path.join(__dirname, 'medical_demo.csv');
 
-async function importCsvToDb(filePath) {
-    const results = [];
+// async function importCsvToDb(filePath) {
+//     const results = [];
 
-    // Parse the CSV file
-    fs.createReadStream(filePath)
-        .pipe(csv())
-        .on('data', (data) => results.push(data))
-        .on('end', async () => {
-            for (const row of results) {
-                const {
-                    age,
-                    gender,
-                    race,
-                    como,
-                    disease,
-                    sub_disease,
-                    bio_markers,
-                    perf_stat,
-                    preferred_drug,
-                    alternate_drug,
-                    guideline_link,
-                    payer_pathway,
-                    overall_survival,
-                    ae,
-                    ae_management,
-                } = row;
-                console.log("Row: " + JSON.stringify(row));
-                try {
-                    const record = await prisma.inputDetails.findFirst({
-                        where: {
-                            "age": parseInt(age),
-                            "gender": gender,
-                            "race": race,
-                            "como": como,
-                            "disease": disease,
-                            "sub_disease": sub_disease,
-                            "bio_markers": bio_markers,
-                            "perf_stat": perf_stat,
-                        },
-                    })
-                    console.log("record: ", record);
-                    if(!record){
-                        console.log(age,
-                            gender,
-                            race,
-                            como,
-                            disease,
-                            sub_disease,
-                            bio_markers,
-                            perf_stat,
-                            preferred_drug,
-                            alternate_drug,
-                            guideline_link,
-                            payer_pathway,
-                            overall_survival,
-                            ae,
-                            ae_management, "ae.....")
-                        await prisma.inputDetails.create({ 
-                            data: {
-                                "age": parseInt(age),
-                                "gender": gender,
-                                "race": race,
-                                "como": como,
-                                "disease": disease,
-                                "sub_disease": sub_disease,
-                                "bio_markers": bio_markers,
-                                "perf_stat": perf_stat,
-                               // "preferred_drug": preferred_drug,
-                                "alternate_drug": alternate_drug,
-                                "guideline_link": guideline_link,
-                                "payer_pathway": payer_pathway,
-                                "overall_survival": overall_survival,
-                                "ae": ae,
-                                "ae_management": ae_management
-                            }
-                        })
-                    }
-                } catch (err) {
-                    console.error('Error inserting/updating data:', err);
-                }
-            }
-        });
-}
+//     // Parse the CSV file
+//     fs.createReadStream(filePath)
+//         .pipe(csv())
+//         .on('data', (data) => results.push(data))
+//         .on('end', async () => {
+//             for (const row of results) {
+//                 const {
+//                     age,
+//                     gender,
+//                     race,
+//                     como,
+//                     disease,
+//                     sub_disease,
+//                     bio_markers,
+//                     perf_stat,
+//                     preferred_drug,
+//                     alternate_drug,
+//                     guideline_link,
+//                     payer_pathway,
+//                     overall_survival,
+//                     ae,
+//                     ae_management,
+//                 } = row;
+//                 console.log("Row: " + JSON.stringify(row));
+//                 try {
+//                     const record = await prisma.inputDetails.findFirst({
+//                         where: {
+//                             "age": parseInt(age),
+//                             "gender": gender,
+//                             "race": race,
+//                             "como": como,
+//                             "disease": disease,
+//                             "sub_disease": sub_disease,
+//                             "bio_markers": bio_markers,
+//                             "perf_stat": perf_stat,
+//                         },
+//                     })
+//                     console.log("record: ", record);
+//                     if(!record){
+//                         await prisma.inputDetails.create({ 
+//                             data: {
+//                                 "age": parseInt(age),
+//                                 "gender": gender,
+//                                 "race": race,
+//                                 "como": como,
+//                                 "disease": disease,
+//                                 "sub_disease": sub_disease,
+//                                 "bio_markers": bio_markers,
+//                                 "perf_stat": perf_stat,
+//                                // "preferred_drug": preferred_drug,
+//                                 "alternate_drug": alternate_drug,
+//                                 "guideline_link": guideline_link,
+//                                 "payer_pathway": payer_pathway,
+//                                 "overall_survival": overall_survival,
+//                                 "ae": ae,
+//                                 "ae_management": ae_management
+//                             }
+//                         })
+//                     }
+//                 } catch (err) {
+//                     console.error('Error inserting/updating data:', err);
+//                 }
+//             }
+//         });
+// }
 
-await importCsvToDb(csvFilePath);
+// await importCsvToDb(csvFilePath);
 const records = await prisma.inputDetails.findMany({});
 console.log("records: ", records)
 
