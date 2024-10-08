@@ -96,8 +96,8 @@ const csvFilePath = path.join(__dirname, 'medical_demo.csv');
 // }
 
 // await importCsvToDb(csvFilePath);
-const records = await prisma.inputDetails.findMany({});
-console.log("records: ", records)
+//const records = await prisma.inputDetails.findMany({});
+//console.log("records: ", records)
 
 
 app.listen(port, () => console.log("Server listening on: " + port));
