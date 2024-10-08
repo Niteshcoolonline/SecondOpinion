@@ -68,6 +68,7 @@ async function importCsvToDb(filePath) {
                     })
                     console.log("record: ", record);
                     if(!record){
+                        console.log(ae, "ae.....")
                         await prisma.inputDetails.create({ 
                             data: {
                                 "age": parseInt(age),
