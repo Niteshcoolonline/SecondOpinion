@@ -24,7 +24,7 @@ import ApiRoutes from "./routes/api.js";
 app.use("/api", ApiRoutes);
 
 
-const csvFilePath = path.join(__dirname, 'medical_demo.csv');
+//const csvFilePath = path.join(__dirname, 'medical_demo.csv');
 
 // async function importCsvToDb(filePath) {
 //     const results = [];
