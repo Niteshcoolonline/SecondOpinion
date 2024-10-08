@@ -41,12 +41,14 @@ export default class PatientController {
             const patient_payload = createPatientPayload(payload);
             const input_details_payload = createInputDetailsPayload(payload);
             patient_payload.user_id = user.id;
-
+            console.log("patient payload : ", patient_payload);
+            console.log("input details payload : ", input_details_payload);
             let patient = await prisma.patients.findUnique({
                 where: { 
                     email: payload.email
                 }
             })
+            console.log("patient from db : ", patient);
             if(!patient) {
                 patient = await prisma.patients.create({data:patient_payload});
             }
@@ -60,8 +62,10 @@ export default class PatientController {
                 })
             }
             const inputDetail = await getInputDetails(input_details_payload);
+            console.log("input details from db: ", inputDetail)
             //const outputDetail = await getOutputDetails(inputDetail);
             const inputOutputPatientMappings_payload = createInputOutputDetailMappingPayload(patient, inputDetail);
+            console.log("inputOutputPatientMappings_payload: ", inputOutputPatientMappings_payload);
             await prisma.inputOutputPatientMappings.create({data:inputOutputPatientMappings_payload});
             delete inputDetail.created_at;
             delete inputDetail.updated_at;
